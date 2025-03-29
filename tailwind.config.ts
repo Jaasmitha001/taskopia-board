@@ -64,13 +64,13 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				kanban: {
-          todo: "#EDF2F7",
+          todo: "#F5F0FF",
           inprogress: "#EBF5FF",
-          review: "#F9F4FF", 
+          review: "#FFF0F6", 
           completed: "#F0FFF4",
-          "todo-header": "#CBD5E0",
+          "todo-header": "#D6BCFA",
           "inprogress-header": "#90CDF4",
-          "review-header": "#D6BCFA",
+          "review-header": "#F8A5C2",
           "completed-header": "#9AE6B4",
         },
         priority: {
@@ -109,13 +109,28 @@ export default {
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0.8' },
         },
+        'float': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-5px)' },
+        },
+        'gradient-shift': {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
         'task-appear': 'task-appear 0.3s ease-out forwards',
         'pulse-subtle': 'pulse-subtle 2s ease-in-out infinite',
-			}
+        'float': 'float 5s ease-in-out infinite',
+        'gradient-shift': 'gradient-shift 8s ease infinite',
+			},
+      backgroundImage: {
+        'gradient-task': 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 100%)',
+        'gradient-rainbow': 'linear-gradient(90deg, #f5a5c2 0%, #7928ca 25%, #ff0080 50%, #7928ca 75%, #f5a5c2 100%)',
+      },
 		}
 	},
 	plugins: [require("tailwindcss-animate")],

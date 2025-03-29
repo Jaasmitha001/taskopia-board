@@ -14,16 +14,16 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 221.2 83% 53.3%;
+    --primary: 262.1 83% 58.4%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
+    --secondary: 220 14.3% 95.9%;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
+    --accent: 262.1 83% 96.4%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
@@ -31,9 +31,9 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83% 53.3%;
+    --ring: 262.1 83% 58.4%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -55,8 +55,8 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 263.4 70% 50.4%;
+    --primary-foreground: 210 40% 98%;
 
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -72,7 +72,7 @@
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
+    --ring: 263.4 70% 50.4%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -110,7 +110,7 @@
   }
 
   .task-card {
-    @apply bg-white p-4 rounded-md shadow-sm border border-border 
+    @apply bg-gradient-task p-4 rounded-md shadow-sm border border-border 
            hover:shadow-md transition-all duration-200 
            cursor-grab active:cursor-grabbing;
   }
@@ -124,7 +124,7 @@
   }
 
   .kanban-column {
-    @apply flex flex-col h-full rounded-md p-4 min-w-[300px];
+    @apply flex flex-col h-full rounded-md p-4 min-w-[300px] shadow-md border border-border/50;
   }
 
   .kanban-column-content {
@@ -132,7 +132,7 @@
   }
 
   .priority-badge {
-    @apply text-xs font-medium py-1 px-2 rounded-full;
+    @apply text-xs font-medium py-1 px-2 rounded-full shadow-sm;
   }
 
   .priority-low {
@@ -148,7 +148,7 @@
   }
 
   .column-header {
-    @apply flex items-center justify-between mb-3 pb-2 font-semibold;
+    @apply flex items-center justify-between mb-3 pb-2 font-semibold rounded-t-md;
   }
 
   .avatar-stack {
@@ -157,5 +157,45 @@
 
   .avatar-stack img {
     @apply inline-block h-8 w-8 rounded-full ring-2 ring-white;
+  }
+  
+  /* Rainbow gradient text effect */
+  .gradient-text {
+    @apply bg-gradient-rainbow bg-clip-text text-transparent;
+    background-size: 200% auto;
+    animation: gradient-shift 8s ease infinite;
+  }
+  
+  /* Colorful card effects */
+  .todo-column {
+    @apply bg-kanban-todo border-kanban-todo-header/30;
+  }
+  
+  .todo-header {
+    @apply bg-kanban-todo-header/20 text-purple-800;
+  }
+  
+  .inprogress-column {
+    @apply bg-kanban-inprogress border-kanban-inprogress-header/30;
+  }
+  
+  .inprogress-header {
+    @apply bg-kanban-inprogress-header/20 text-blue-800;
+  }
+  
+  .review-column {
+    @apply bg-kanban-review border-kanban-review-header/30;
+  }
+  
+  .review-header {
+    @apply bg-kanban-review-header/20 text-pink-800;
+  }
+  
+  .completed-column {
+    @apply bg-kanban-completed border-kanban-completed-header/30;
+  }
+  
+  .completed-header {
+    @apply bg-kanban-completed-header/20 text-green-800;
   }
 }
