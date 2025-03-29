@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,22 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				kanban: {
+          todo: "#EDF2F7",
+          inprogress: "#EBF5FF",
+          review: "#F9F4FF", 
+          completed: "#F0FFF4",
+          "todo-header": "#CBD5E0",
+          "inprogress-header": "#90CDF4",
+          "review-header": "#D6BCFA",
+          "completed-header": "#9AE6B4",
+        },
+        priority: {
+          low: "#68D391",
+          medium: "#F6E05E",
+          high: "#F56565",
+        }
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +100,21 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+        'task-appear': {
+          '0%': { opacity: '0', transform: 'scale(0.9)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        'pulse-subtle': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.8' },
+        },
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+        'task-appear': 'task-appear 0.3s ease-out forwards',
+        'pulse-subtle': 'pulse-subtle 2s ease-in-out infinite',
 			}
 		}
 	},
