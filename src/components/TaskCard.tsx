@@ -12,6 +12,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Badge } from "./ui/badge";
 import { forwardRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface TaskCardProps {
   task: Task;
@@ -22,6 +23,7 @@ interface TaskCardProps {
 const TaskCard = forwardRef<HTMLDivElement, TaskCardProps>(
   ({ task, onEdit, onDelete }, ref) => {
     const deadlineStatus = getDeadlineStatus(task.deadline);
+    const navigate = useNavigate();
 
     const getPriorityColor = (priority: Task["priority"]) => {
       switch (priority) {
@@ -36,10 +38,20 @@ const TaskCard = forwardRef<HTMLDivElement, TaskCardProps>(
       }
     };
 
+    const handleCardClick = (e: React.MouseEvent) => {
+      // Prevent navigation if clicking on the menu
+      if (e.target instanceof HTMLElement && 
+          (e.target.closest('button') || e.target.closest('[role="menuitem"]'))) {
+        return;
+      }
+      navigate(`/task/${task.id}`);
+    };
+
     return (
       <Card
         ref={ref}
-        className={`task-card animate-task-appear ${deadlineStatus}`}
+        className={`task-card animate-task-appear ${deadlineStatus} cursor-pointer`}
+        onClick={handleCardClick}
       >
         <CardHeader className="pb-2 pt-3 px-3 flex flex-row justify-between items-start">
           <div className="font-medium text-sm truncate">{task.title}</div>
